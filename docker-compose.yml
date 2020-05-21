@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  mongo:
+    image: mongo
+    networks: 
+      - ing-web
+
+  node:
+    container_name: node_usuarios
+    build: .
+    ports: 
+      - 8081:8081
+    links:
+      - mongo
+    networks:
+      - ing-web
+
+networks:
+  ing-web:
